@@ -1,0 +1,38 @@
+{
+  "name": "eve-imessage-agent",
+  "version": "0.1.0",
+  "description": "Reference implementation: an iMessage agent on eve that creates Ambush streams for each person and receives their events over signed webhooks.",
+  "type": "module",
+  "imports": {
+    "#*": "./agent/*",
+    "#evals/*": "./evals/*"
+  },
+  "scripts": {
+    "build": "eve build",
+    "deploy": "eve deploy",
+    "dev": "eve dev",
+    "eval": "eve eval",
+    "start": "eve start",
+    "typecheck": "tsc",
+    "test": "node --test \"agent/lib/*.test.ts\""
+  },
+  "dependencies": {
+    "@ai-sdk/openai": "^4.0.65",
+    "@chat-adapter/state-memory": "^4.40.0",
+    "@chat-adapter/state-redis": "^4.40.0",
+    "@upstash/redis": "^1.38.4",
+    "@vercel/connect": "1.0.0",
+    "ai": "^7.0.93",
+    "chat": "^4.40.0",
+    "chat-adapter-sendblue": "^0.2.0",
+    "eve": "^0.53.1",
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "24.x",
+    "typescript": "7.0.2"
+  },
+  "engines": {
+    "node": "24.x"
+  }
+}
