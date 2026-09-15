@@ -2,7 +2,7 @@ import { ambushClient } from "./ambush-client.ts";
 import { config, publicBaseUrl } from "./config.ts";
 import { countOwnedFeeds, ensureDestination, ownsFeed } from "./destinations.ts";
 import type { FeedOwner } from "./owner.ts";
-import { tapStore } from "./store.ts";
+import { agentStore } from "./store.ts";
 
 /** Everything a tool needs, resolved from env once per process. */
 export function runtime() {
@@ -12,7 +12,7 @@ export function runtime() {
   return {
     settings,
     ambush,
-    store: tapStore(),
+    store: agentStore(),
     destinationFor: (owner: FeedOwner) => ensureDestination(ambush, origin, settings.AMBUSH_WEBHOOK_SECRET, owner),
     owns: (owner: FeedOwner, feedId: string) => ownsFeed(ambush, origin, owner, feedId),
     countFeeds: (owner: FeedOwner) => countOwnedFeeds(ambush, origin, owner),
